@@ -14,10 +14,10 @@ function BudgetGoals(base) {
     this.base = base;
 
     // set goals
-    var savings = .1;
-    var bills = .3;
-    var debt = .2;
-    var needs = .4;
+    this.savings = .1;
+    this.bills = .3;
+    this.debt = .2;
+    this.needs = .4;
 
     this.savingsGoal = function() {
         return base * savings;
@@ -35,5 +35,29 @@ function BudgetGoals(base) {
         return base * needs;
     }
 
+}
+
+budgetA = new BudgetGoals(70000);
+budgetA
+
+
+var elSavings = document.getElementById('income-value');
+elSavings.textContent = budgetA.base;
+
+/**
+ * Object
+ * given element id and element content
+ */
+function printout(id, content) {
+
+    // get the element node
+    this.id = document.getElementById(id);
+    this.id.textContent = this.content;
+
+    // set the node content
+    this.id.textContent = this.content;
+
 
 }
+
+printDebt = new printout('debt-value', budgetA.debtGoal());
