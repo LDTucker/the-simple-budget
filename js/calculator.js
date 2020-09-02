@@ -2,14 +2,14 @@
  * Budget Calculator
  */
 // set input variables
-var income = 50000;
+var income = 1587.33;
 
 /**
- * Object 
+ * Object
  * Calculates Allocation Goals
  */
 function BudgetGoals(base) {
-    
+
     // set income
     this.base = base;
 
@@ -19,45 +19,52 @@ function BudgetGoals(base) {
     this.debt = .2;
     this.needs = .4;
 
-    this.savingsGoal = function() {
-        return base * savings;
+    this.savingsCalc = function() {
+        var savingsAmount = this.base * this.savings; // this is used for all object variables usages
+
+        return savingsAmount.toFixed(2);
     }
 
-    this.billsGoal = function() {
-        return base * bills;
+    this.billsCalc = function() {
+        var billsAmount = this.base * this.bills;
+
+        return billsAmount.toFixed(2);
     }
 
-    this.debtGoal = function() {
-        return base * debt;
-    } 
+    this.debtCalc = function() {
+        var debtAmount = this.base * this.debt;
 
-    this.needsGoal = function() {
-        return base * needs;
+        return debtAmount.toFixed(2);
+    }
+
+    this.needsCalc = function() {
+        var needsAmount = this.base * this.needs;
+
+        return needsAmount.toFixed(2);
     }
 
 }
 
-budgetA = new BudgetGoals(70000);
-budgetA
+budgetA = new BudgetGoals(income);
 
 
 var elSavings = document.getElementById('income-value');
 elSavings.textContent = budgetA.base;
 
 /**
- * Object
- * given element id and element content
+ * Create a function to print
+ * parameters [elementId, value]
  */
-function printout(id, content) {
 
-    // get the element node
-    this.id = document.getElementById(id);
-    this.id.textContent = this.content;
+ function printOut(elementId, elementValue) {
+    var id = elementId;
+    var value = elementValue;
 
-    // set the node content
-    this.id.textContent = this.content;
+    var el = document.getElementById(id);
+    el.textContent = value;
+ };
 
-
-}
-
-printDebt = new printout('debt-value', budgetA.debtGoal());
+ printOut('savings-value', '$'+ budgetA.savingsCalc());
+ printOut('debt-value', '$'+ budgetA.debtCalc());
+ printOut('bills-value', '$'+ budgetA.billsCalc());
+ printOut('needs-value', '$'+ budgetA.needsCalc())
